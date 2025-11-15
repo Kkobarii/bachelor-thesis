@@ -21,6 +21,13 @@ jobs:
           sudo Xvfb :99 -ac -screen 0 1024x768x8 &
           export DISPLAY=:99
 
+      # Check
+      - name: Check available packages
+        run: |
+          apt-cache search libfreetype
+          apt-cache show libfreetype6
+          apt-cache show libfreetype6-dev
+
       # Compiling LaTeX documents
       - name: Compiling LaTeX documents
         uses: xu-cheng/latex-action@v2
@@ -28,7 +35,7 @@ jobs:
           root_file: main.tex
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
-          extra_system_packages: 'inkscape openjdk17 fontconfig libfreetype6-dev libxrender1 libxext6 libxi6'
+          extra_system_packages: 'inkscape openjdk17 fontconfig libfreetype6 libfreetype6-dev libxrender1 libxext6 libxi6'
 
       # Upload LaTeX documents to artifacts
       - name: Upload LaTeX documents to artifacts
