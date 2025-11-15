@@ -14,12 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: 'corretto'
-          java-version: '17'
-
       # Fake display for plantuml
       - name: Set up Xvfb
         run: |
@@ -34,7 +28,7 @@ jobs:
           root_file: main.tex
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
-          extra_system_packages: 'inkscape openjdk17'
+          extra_system_packages: 'inkscape openjdk21-jre-head'
         # env:
           # JAVA_TOOL_OPTIONS: "-Djava.awt.headless=false"
 
