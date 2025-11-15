@@ -14,6 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install Java 17
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-17-jdk
+
+      - name: Force Java 17 system-wide
+        run: |
+          sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+          sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+          java -version
+
       # Fake display for plantuml
       - name: Set up Xvfb
         run: |
@@ -29,8 +40,8 @@ jobs:
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
           extra_system_packages: 'inkscape openjdk17'
-        env:
-          JAVA_TOOL_OPTIONS: "-Djava.awt.headless=false"
+        # env:
+          # JAVA_TOOL_OPTIONS: "-Djava.awt.headless=false"
 
       # Upload LaTeX documents to artifacts
       - name: Upload LaTeX documents to artifacts
