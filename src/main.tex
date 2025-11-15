@@ -1,4 +1,4 @@
-\documentclass[czech,bachelor]{../../shared/diploma}
+\documentclass[czech,bachelor]{resources/diploma/diploma}
 
 % Sablonove baliky
 \usepackage[autostyle=true,czech=quotes]{csquotes} % korektni sazba uvozovek, podpora pro balik biblatex
@@ -53,6 +53,7 @@ The main goal of this bachelor thesis is to create and document a~gaming system 
 
 
 % Minted things
+\let\NewCommand\newcommand
 \immediate\write18{echo $ROAD > .ROAD.tex}
 \immediate\write18{echo $ROAD "nejhorší hack by žožka"}
 \input{.ROAD}
@@ -84,12 +85,12 @@ The main goal of this bachelor thesis is to create and document a~gaming system 
 % PlantUML
 \newenvironment{plantuml}[1]{\VerbatimOut{#1.puml}}{\endVerbatimOut}
 \newcommand{\includeplantuml}[2][]{%
-    \IfFileExists{figures/diagrams/out/#2.pdf}{%
-        \immediate\write18{if [ figures/diagrams/#2.puml -nt figures/diagrams/out/#2.pdf ]; then java -jar ../../shared/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/#2.puml; inkscape figures/diagrams/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/out/#2.pdf; rm figures/diagrams/out/#2.svg; fi}
+    \IfFileExists{figures/diagrams/activity/out/#2.pdf}{%
+        \immediate\write18{if [ figures/diagrams/activity/#2.puml -nt figures/diagrams/activity/out/#2.pdf ]; then java -jar resources/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/activity/#2.puml; inkscape figures/diagrams/activity/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/activity/out/#2.pdf; rm figures/diagrams/activity/out/#2.svg; fi}
     }{%
-        \immediate\write18{java -jar ../../shared/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/#2.puml; inkscape figures/diagrams/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/out/#2.pdf; rm figures/diagrams/out/#2.svg}
+        \immediate\write18{java -jar resources/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/activity/#2.puml; inkscape figures/diagrams/activity/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/activity/out/#2.pdf; rm figures/diagrams/activity/out/#2.svg}
     }
-    \includegraphics[#1]{figures/diagrams/out/#2.pdf}
+    \includegraphics[#1]{figures/diagrams/activity/out/#2.pdf}
 }
 
 % Hide columns in tables

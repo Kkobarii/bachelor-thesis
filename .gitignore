@@ -2,6 +2,5 @@
 .code
 .vscode
 
-inspo
-src/figures/diagrams/out
+src/figures/diagrams/activity/out
 src/.ROAD.tex
