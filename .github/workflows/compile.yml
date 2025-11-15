@@ -21,14 +21,22 @@ jobs:
           sudo Xvfb :99 -ac -screen 0 1024x768x8 &
           export DISPLAY=:99
 
+      # Install necessary packages
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig libfreetype6-dev libxrender1 libxext6 libxi6 inkscape openjdk17
+
+      # Compiling LaTeX documents
       - name: Compiling LaTeX documents
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
-          extra_system_packages: 'inkscape openjdk17 fontconfig'
+          extra_system_packages: 'inkscape openjdk17 fontconfig libfreetype6-dev libxrender1 libxext6 libxi6'
 
+      # Upload LaTeX documents to artifacts
       - name: Upload LaTeX documents to artifacts
         uses: actions/upload-artifact@v4
         if: success()
