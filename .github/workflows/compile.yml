@@ -6,19 +6,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-markdown:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v3
-      - uses: DavidAnson/markdownlint-cli2-action@v13.0.0
-        with:
-          fix: true
-
   build-latex:
     runs-on: ubuntu-latest
     env: 
-      ROAD: "\\newcommand{\\ROAD}{.}"
+      ROAD: "\\NewCommand{\\ROAD}{.}"
+      TEXMF_OUTPUT_DIRECTORY: "."
     steps:
       - uses: actions/checkout@v3
 
