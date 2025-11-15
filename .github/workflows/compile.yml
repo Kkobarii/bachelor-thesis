@@ -23,12 +23,12 @@ jobs:
 
       # Compiling LaTeX documents
       - name: Compiling LaTeX documents
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: main.tex
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
-          extra_system_packages: 'inkscape openjdk21-jre-head'
+          extra_system_packages: 'inkscape openjdk17'
         # env:
           # JAVA_TOOL_OPTIONS: "-Djava.awt.headless=false"
 
