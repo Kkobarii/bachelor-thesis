@@ -1,0 +1,140 @@
+\documentclass[czech,bachelor]{../../shared/diploma}
+
+% Sablonove baliky
+\usepackage[autostyle=true,czech=quotes]{csquotes} % korektni sazba uvozovek, podpora pro balik biblatex
+\usepackage[backend=biber, style=iso-numeric, alldates=iso]{biblatex} % bibliografie
+\usepackage{dcolumn} % sloupce tabulky s ciselnymi hodnotami
+\usepackage{subfig} % makra pro "podobrazky" a "podtabulky"
+
+% Moje baliky
+\usepackage{float} % lepsi umistovani obrazku (H)
+\usepackage{glossaries} % balik pro praci s odbornymi pojmy
+\usepackage{hyperref} % vkladani hypertextovych odkazu
+\usepackage{xurl} % zalomeni dlouhych URL
+\usepackage{tablefootnote} % poznámky pod tabulkou
+\usepackage{color} % barvickyy
+\usepackage{array} % schovavani sloupcu v tabulkach
+
+% Pozadovane vstupy pro generovani titulnich stran.
+\ThesisAuthor{Barbora Kovalská}
+\ThesisSupervisor{Ing. Radoslav Fasuga, Ph.D.}
+
+\CzechThesisTitle{Tvorba herního modelu výpravné evoluční hry}
+\EnglishThesisTitle{Creation of the Game Model for the Narrative Evolution Game}
+
+\SubmissionYear{2024}
+
+\ThesisAssignmentFileName{../specification.pdf}
+
+\Acknowledgement{%
+Ráda bych na tomto místě poděkovala vedoucímu práce Ing. Radoslavu Fasugovi, Ph.D. za jeho cenné rady a~vedení během tvorby této bakalářské práce. Dále bych chtěla poděkovat kolegům Pavlu Mikulovi, Martinu Korotwitschkovi a~Miroslavu Osobovi za jejich aktivní zapojení, spolupráci a~podněty v~průběhu vývoje. V~neposlední řadě poděkování směřuji svému příteli a~rodině za jejich trpělivost a~podporu během celého studia.
+}
+
+\CzechAbstract{%
+Hlavním cílem této bakalářské práce je vytvoření a~dokumentace herního systému pro hybridní deskovou hru, která kombinuje fyzické komponenty a~virtuální prostředí. Práce se nejprve zabývá historií deskových her a~studiem klíčových herních mechanik a~analýzou existujících herních modelů. Hlavní část práce se pak věnuje návrhu herního systému, který je založen na principu výpravné evoluční hry. Výsledný herní systém je určen pro hybridní využití fyzických prvků a~digitálního prostředí a~v~kombinaci s~částmi ostatních členů týmu představuje plně realizovanou hru, která poskytuje hráčům bohaté a~dynamické herní zážitky.
+}
+\CzechKeywords{hybridní desková hra; herní design; rozhodovací pravidla; analýza; evaluace; herní model; týmová spolupráce; herní příručka}
+
+\EnglishAbstract{%
+The main goal of this bachelor thesis is to create and document a~gaming system for a~hybrid board game that combines physical components and a~virtual environment. The thesis begins by exploring the history of board games and studying key gaming mechanics, as well as analyzing existing gaming models. The main part of the thesis focuses on designing the gaming system, based on the concept of an narratively evolving game. The resulting gaming system is intended for hybrid use of physical elements and digital environment, and when combined with contributions from other team members, represents a~fully realized game providing players with rich and dynamic gaming experiences.
+}
+\EnglishKeywords{hybrid board game; game design; decision rules; analysis; evaluation; game model; team collaboration; game manual}
+
+\AddAcronym{API}{Application Programming Interface}
+\AddAcronym{CRUD}{Create, Read, Update, Delete}
+\AddAcronym{D\&D}{Dungeons \& Dragons}
+\AddAcronym{DM}{Dungeon Master}
+\AddAcronym{FAQ}{Frequently Asked Questions}
+\AddAcronym{JSON}{JavaScript Object Notation}
+\AddAcronym{RPG}{Role Playing Game}
+\AddAcronym{TTS}{Trails Through Shadows}
+
+\addbibresource{resources/sauce.bib}
+
+
+% Minted things
+\immediate\write18{echo $ROAD > .ROAD.tex}
+\immediate\write18{echo $ROAD "nejhorší hack by žožka"}
+\input{.ROAD}
+\usepackage[outputdir=\ROAD]{minted} %
+\setminted{fontsize=\fontsize{9}{11}\selectfont, baselinestretch=1, frame=lines, framesep=8pt, linenos, breaklines}
+\renewcommand\listingscaption{Výpis}
+\renewcommand\listoflistingscaption{Seznam výpisů zdrojového kódu}
+
+% Command ať nemusím psát celý Dungeons & Dragons;
+\newcommand{\dnd}{\textit{D\&D}}
+
+% Uprava hloubky obsahu - pozdeji smazat !
+% \setcounter{tocdepth}{2}
+
+% Custom reference
+\newcommand{\customref}[2]{\hyperref[#2]{#1~\ref*{#2}}}
+\newcommand{\chapterref}[1]{(\hyperref[#1]{Kapitola~\ref*{#1}})} % todo sklonovani jako nullable parametr
+\newcommand{\imageref}[1]{(\hyperref[#1]{Obrázek~\ref*{#1}})}
+\newcommand{\tableref}[1]{(\hyperref[#1]{Tabulka~\ref*{#1}})}
+\newcommand{\glsref}[1]{\textit{\gls{#1}}}
+\newcommand{\gameref}[1]{\textit{#1}}
+\newcommand{\attr}[1]{(\texttt{#1})}
+\newcommand{\devTool}[2]{\textit{#1}\footnote{\href{#2}{#2}}}
+
+% Glossary stuff
+\makenoidxglossaries
+\loadglsentries{resources/games.tex}
+
+% PlantUML
+\newenvironment{plantuml}[1]{\VerbatimOut{#1.puml}}{\endVerbatimOut}
+\newcommand{\includeplantuml}[2][]{%
+    \IfFileExists{figures/diagrams/out/#2.pdf}{%
+        \immediate\write18{if [ figures/diagrams/#2.puml -nt figures/diagrams/out/#2.pdf ]; then java -jar ../../shared/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/#2.puml; inkscape figures/diagrams/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/out/#2.pdf; rm figures/diagrams/out/#2.svg; fi}
+    }{%
+        \immediate\write18{java -jar ../../shared/libs/plantuml-1.2024.3.jar -o out -tsvg figures/diagrams/#2.puml; inkscape figures/diagrams/out/#2.svg --export-area-drawing --export-filename=figures/diagrams/out/#2.pdf; rm figures/diagrams/out/#2.svg}
+    }
+    \includegraphics[#1]{figures/diagrams/out/#2.pdf}
+}
+
+% Hide columns in tables
+\newcolumntype{H}{>{\setbox0=\hbox\bgroup}c<{\egroup}@{}}
+
+
+% Zacatek dokumentu
+\begin{document}
+
+% Titulni strany
+\MakeTitlePages
+
+% Seznam obrazku
+\listoffigures
+\clearpage
+
+% Seznam tabulek
+\listoftables
+\clearpage
+
+% Seznam výpisů zdrojového kódu
+\addcontentsline{toc}{chapter}{Seznam výpisů zdrojového kódu}
+\listoflistings
+\clearpage
+
+% Text
+\input{chapters/Introduction.tex}
+
+\input{chapters/theory/History.tex}
+\input{chapters/theory/GameDesign.tex}
+\input{chapters/theory/OtherGames.tex}
+
+\input{chapters/implementation/Requirements.tex}
+\input{chapters/implementation/Design.tex}
+\input{chapters/implementation/Implementation.tex}
+
+\input{chapters/Conclusion.tex}
+
+% Seznam literatury
+\printbibliography[title={Literatura}, heading=bibintoc]
+
+% Přílohy
+\appendix
+\input{chapters/appendix/DatabaseSchema.tex}
+\input{chapters/appendix/Rulebook.tex}
+\input{chapters/appendix/GameList.tex}
+
+\end{document}
