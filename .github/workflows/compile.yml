@@ -7,12 +7,18 @@ on:
 
 jobs:
   build-latex:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     env: 
       ROAD: "\\NewCommand{\\ROAD}{.}"
       TEXMF_OUTPUT_DIRECTORY: "."
     steps:
       - uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'coretto'
+          java-version: '17'
 
       # Fake display for plantuml
       - name: Set up Xvfb
