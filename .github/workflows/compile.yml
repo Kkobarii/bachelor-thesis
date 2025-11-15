@@ -35,7 +35,9 @@ jobs:
           root_file: main.tex
           working_directory: src
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
-          extra_system_packages: 'inkscape openjdk17 fontconfig libfreetype6 libfreetype6-dev libxrender1 libxext6 libxi6'
+          extra_system_packages: 'inkscape openjdk17 fontconfig libfreetype6 libxrender1 libxext6 libxi6'
+        env:
+          JAVA_TOOL_OPTIONS: "-Djava.awt.headless=true"
 
       # Upload LaTeX documents to artifacts
       - name: Upload LaTeX documents to artifacts
