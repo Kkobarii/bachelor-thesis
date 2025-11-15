@@ -21,12 +21,6 @@ jobs:
           sudo Xvfb :99 -ac -screen 0 1024x768x8 &
           export DISPLAY=:99
 
-      # Install necessary packages
-      - name: Install packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fontconfig libfreetype6-dev libxrender1 libxext6 libxi6 inkscape openjdk17
-
       # Compiling LaTeX documents
       - name: Compiling LaTeX documents
         uses: xu-cheng/latex-action@v2
