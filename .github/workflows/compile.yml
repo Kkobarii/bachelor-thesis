@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-latex:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     env: 
       ROAD: "\\NewCommand{\\ROAD}{.}"
       TEXMF_OUTPUT_DIRECTORY: "."
