@@ -55,20 +55,15 @@ jobs:
           name: Bachelor-Thesis
           path: ./artifact
 
-      - name: Gimme some info
-        run: |
-          ls -la
-          ls -la artifact
-
       - name: Checkout thesis repo
         uses: actions/checkout@v3
         with:
-          repository: your-username/thesis
+          repository: Kkobarii/thesis
           token: ${{ secrets.THESIS_REPO_TOKEN }}
           path: thesis
 
       - name: Replace PDF in thesis repo
-        run: cp artifact/src/bachelor.pdf thesis/src/bachelor.pdf
+        run: cp artifact/bachelor.pdf thesis/src/bachelor.pdf
 
       - name: Commit and push
         run: |
