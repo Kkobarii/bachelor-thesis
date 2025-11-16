@@ -1,4 +1,4 @@
-name: Compile LaTeX
+name: Compile LaTeX (Bachelor)
 
 on:
   push:
