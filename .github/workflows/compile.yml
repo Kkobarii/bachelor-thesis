@@ -8,7 +8,7 @@ on:
 jobs:
   build-latex:
     runs-on: ubuntu-latest
-    env: 
+    env:
       ROAD: "\\NewCommand{\\ROAD}{.}"
       TEXMF_OUTPUT_DIRECTORY: "."
     steps:
@@ -30,8 +30,10 @@ jobs:
           args: -pdf -halt-on-error -synctex=1 -interaction=nonstopmode --shell-escape --enable-write18
           extra_system_packages: 'inkscape openjdk17'
           docker_image: ghcr.io/xu-cheng/texlive-full:20240315
-        # env:
-          # JAVA_TOOL_OPTIONS: "-Djava.awt.headless=false"
+
+      # Rename the resulting PDF
+      - name: Rename PDF
+        run: mv src/main.pdf src/bachelor.pdf
 
       # Upload LaTeX documents to artifacts
       - name: Upload LaTeX documents to artifacts
@@ -39,5 +41,5 @@ jobs:
         if: success()
         with:
           name: Bachelor-Thesis
-          path: src/main.pdf
+          path: src/bachelor.pdf
           if-no-files-found: error
