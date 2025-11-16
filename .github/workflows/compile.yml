@@ -55,8 +55,10 @@ jobs:
           name: Bachelor-Thesis
           path: ./artifact
 
-      - name: Unzip artifact
-        run: unzip artifact/Bachelor-Thesis.zip -d artifact
+      - name: Gimme some info
+        run: |
+          ls -la
+          ls -la artifact
 
       - name: Checkout thesis repo
         uses: actions/checkout@v3
