@@ -1,59 +1,38 @@
-# TTS-Thesis
+[![Compile LaTeX](https://github.com/Kkobarii/bachelor-thesis/actions/workflows/compile.yml/badge.svg)](https://github.com/Kkobarii/bachelor-thesis/actions/workflows/compile.yml)
+# My Bachelor Thesis
 
-The purpose of this repo is to share our work in an accessible place, to make it easier to refer to each other.
+This repo hosts the code and documentation for my bachelor thesis.
 
 ## Assignment
 
-Cílem práce je vytvořit výpravnou evoluční hru, která by kombinovala jak fyzicky hratelné komponenty, tak virtuální prostředí, které by sloužilo jako manuál pro rozestavení a evoluci herních situací, evidenci hráčů, turnajů a herních týmů. Součástí hry je tvorba herního modelu s popisem pravidel pro chování uživatele.
+The assignment of the thesis is to create an elaborate narrative evolutionary game that would combine both physically playable components and a virtual environment, which would serve as a manual for setting up and evolving game situations, recording players, tournaments, and game teams.
 
-## Authors
+This thesis was written in a team of four members, each member focusing on a different aspect of the game development. My focus was on creating the game model and defining the rules for user behavior within the game.
 
-### [Barbora Kovalská](https://github.com/Kkobarii) (KOV0354)
+The whole thesis is written in Czech, so I'm sorry to disappoint my non-Czech visitors to this repo. However, if you are interested in the result of our labour, you can find it on our organization page, [Trails Through Shadows](https://github.com/Trails-Through-Shadows).
 
-> ### Tvorba herního modelu výpravné evoluční hry </br> <sup>Creation of the Game Model for the Narrative Evolution Game</sup>
->
-> [Zadání](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/kov0354/specification.pdf) </br>
-[Osnova](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/kov0354/structure.md) </br>
-[Text práce](https://docs.tts-game.fun/thesis/kov0354)
->
-> [![LaTeX Compilation](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/kov0354.yml/badge.svg)](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/kov0354.yml)
+If you do want to read through the thesis itself, or just looks at the pretty pictures, you can find it on my [thesis page](https://thesis.kkobari.eu).
 
-### [Pavel Mikula](https://github.com/Firestone82) (MIK0486)
+## How to Build
 
-> ### Tvorba administrativního rozhraní výpravné evoluční hry </br> <sup>Creation of the Administrative Interface for the Narrative Evolution Game</sup>
->
-> [Zadání](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/mik0486/specification.pdf) </br>
-[Osnova](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/mik0486/structure.md) </br>
-[Text práce](https://docs.tts-game.fun/thesis/mik0486)
->
-> [![LaTeX Compilation](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/mik0486.yml/badge.svg)](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/mik0486.yml)
+Not gonna lie, the build process is quite a pain. My setup process consists of opening the repo in VS Code with the LaTeX Workshop extension installed, compiling it through that, and fixing any issues that come up.
 
-### [Martin Korotwitschka](https://github.com/rcMarty) (KOR0289)
+Some notes that might help you build it locally:
 
-> ### Tvorba API výpravné evoluční hry </br> <sup>API Design for the Narrative Evolution Game</sup>
->
-> [Zadání](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/kor0289/specification.pdf) </br>
-[Osnova](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/kor0289/structure.md) </br>
-[Text práce](https://docs.tts-game.fun/thesis/kor0289)
->
-> [![LaTeX Compilation](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/kor0289.yml/badge.svg)](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/kor0289.yml)
+- Make sure you have a reasonably complete TeX distribution (TeX Live or MikTeX) because the project uses many packages. You can install them through your distribution's package manager or use the package manager that comes with your TeX distribution.
+- Some things to have:
+    - `biber` (for bibliography processing).
+    - `inkscape` and a Java runtime (required for PlantUML/diagram generation).
+    - Czech localization files for LaTeX (`texlive-lang-czech`).
 
-### [Miroslav Osoba](https://github.com/Orfian) (OSO0008)
+Good luck out there!
 
-> ### Tvorba uživatelského prostředí výpravné evoluční hry </br> <sup>Creation of the User Environment for the Narrative Evolution Game</sup>
->
-> [Zadání](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/oso0008/specification.pdf) </br>
-[Osnova](https://github.com/Trails-Through-Shadows/TTS-Thesis/blob/master/oso0008/structure.md) </br>
-[Text práce](https://docs.tts-game.fun/thesis/oso0008)
->
-> [![LaTeX Compilation](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/oso0008.yml/badge.svg)](https://github.com/Trails-Through-Shadows/TTS-Thesis/actions/workflows/oso0008.yml)
+## Continuous Integration
 
-## Recommended literature
+This repository has a very neat and very useless GitHub Actions workflow (`.github/workflows/compile.yml`) that builds the PDF on push and pull requests and uploads the compiled `bachelor.pdf` as an artifact. The output file is then uploaded to my [thesis repo](https://github.com/Kkobarii/thesis), so you can always find the latest version there.
 
-- [1] Engelstein, Geoffrey, and Isaac Shalev. **Building blocks of tabletop game design : an encyclopaedia of mechanisms**. Boca Raton, FL: CRC Press, 2022. ISBN: 978-1032015835
-- [2] Engelstein, Geoffrey. **Game production : prototyping and producing your board game**. Boca Raton: CRC Press, 2020. ISBN: 978-0367527747
-- [3] Warrender, Jeff, and Ben Maddox. **You said this would be fun : what makes a game good and how to make a good game**. Middletown, DE: Belltower Press, 2020. ISBN: 979-8624516823
-- [4] Schell, Jesse. **The art of game design : a book of lenses**. Boca Raton, FL: CRC Press LLC, 2020. ISBN: 978-1138632059
-- [5] Sylvester, Tynan. **Designing games : a guide to engineering experiences**. Sebastopol, CA: O'Reilly Media, 2013. ISBN: 978-1449337933
-- [6] Slack, Joe, and Jamey Stegmaier. **The board game designer's guide : the easy 4 step process to create amazing games that people can't stop playing**. Ontario: Crazy Like a Box, 2017. ISBN: 978-1775189206
-- [7] Engelstein, Geoffrey, and Isaac Shalev. **Building blocks of tabletop game design : an encyclopedia of mechanisms**. Boca Raton, FL: CRC Press / Taylor & Francis Group, 2020. ISBN: 978-1138365490
+## Contributing
+
+If you find any typos or mistakes in the thesis, feel free to open an issue or a pull request.
+
+> Originally written January - April 2024
