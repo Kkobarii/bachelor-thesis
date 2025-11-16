@@ -63,7 +63,7 @@ jobs:
           path: thesis
 
       - name: Replace PDF in thesis repo
-        run: cp artifact/bachelor.pdf thesis/src/bachelor.pdf
+        run: cp artifact/bachelor.pdf thesis/static/bachelor.pdf
 
       - name: Commit and push
         run: |
