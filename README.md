@@ -1,5 +1,6 @@
 [![Compile LaTeX](https://github.com/Kkobarii/bachelor-thesis/actions/workflows/compile.yml/badge.svg)](https://github.com/Kkobarii/bachelor-thesis/actions/workflows/compile.yml)
-# My Bachelor Thesis
+### My Bachelor Thesis
+# Creation of a Game Model for a Narrative Evolution Game
 
 This repo hosts the code and documentation for my bachelor thesis.
 
@@ -29,7 +30,7 @@ Good luck out there!
 
 ## Continuous Integration
 
-This repository has a very neat and very useless GitHub Actions workflow (`.github/workflows/compile.yml`) that builds the PDF on push and pull requests and uploads the compiled `bachelor.pdf` as an artifact. The output file is then uploaded to my [thesis repo](https://github.com/Kkobarii/thesis), so you can always find the latest version there.
+This repository has a very neat and very useless GitHub Actions workflow that builds the PDF on push and pull requests and uploads the compiled `bachelor.pdf` as an artifact. The output file is then uploaded to my [thesis repo](https://github.com/Kkobarii/thesis), so you can always find the latest version there.
 
 ## Contributing
 
