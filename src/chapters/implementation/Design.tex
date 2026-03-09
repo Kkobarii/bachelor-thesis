@@ -302,7 +302,7 @@ Každý efekt má dvě základní vlastnosti, které ho popisují. První z~nich
     \label{tab:effects}
 \end{table}
 
-\textbf{Aplikace efektu} se provádí podle postupu znázorněného na obrázku \ref{diag:apply_effect}. Nejprve si systém zjistí, zda má entita nějaké rezistence proti tomuto typu efektu. Pokud ano, tak je síla efektu snížena o~celkovou sílu rezistence a~pokud je výsledek nulový, efekt je zrušen. Jinak systém zkontroluje, zda se jedná o~instantní efekt, a~pokud ano, je vyhodnocen okamžitě. V~opačném případě je uložen do seznamu efektů dané entity a~bude vyhodnocen v~následujícím kole.
+\textbf{Aplikace efektu} se provádí podle postupu znázorněného na \customref{Obrázku}{diag:apply_effect}. Nejprve si systém zjistí, zda má entita nějaké rezistence proti tomuto typu efektu. Pokud ano, tak je síla efektu snížena o~celkovou sílu rezistence a~pokud je výsledek nulový, efekt je zrušen. Jinak systém zkontroluje, zda se jedná o~instantní efekt, a~pokud ano, je vyhodnocen okamžitě. V~opačném případě je uložen do seznamu efektů dané entity a~bude vyhodnocen v~následujícím kole.
 
 \textbf{Vyhodnocení efektu} se dělí na dva typy -- první, který hráči vyhodnocují sami, a~druhý, který vyhodnocuje systém. První typ jsou efekty jako \textit{Push} nebo \textit{Pull}, které systém vyhodnotit nemůže z~důvodu nedostatečných informací. Když jde například o~efekt \textit{Push}, hráči dosaženou entitu posunou o~počet polí, který je uveden ve vlastnosti \textit{Strength} efektu ve směru pryč od zdroje. Druhý typ efektů, jako \textit{Heal} nebo \textit{Poison}, jsou vyhodnoceny systémem, protože se týkají zdraví postav, což je jedna z~věcí, které systém monitoruje.
 
